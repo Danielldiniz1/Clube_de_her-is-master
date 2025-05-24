@@ -98,3 +98,55 @@ CREATE TABLE reports (
 
 INSERT INTO users (name, email, password, role) 
 VALUES ('João Silva', 'joao@exemplo.com', '$2y$10$abcdefghijklmnopqrstuv', 'creator');
+
+
+INSERT INTO clubs (club_name, user_id, description, is_active) 
+VALUES ('Clube dos Heróis Marvel', 1, 'Um clube dedicado aos fãs dos heróis da Marvel', 1);
+
+INSERT INTO products (
+    club_id,
+    name,
+    description,
+    price,
+    stock,
+    category_id,
+    fandom,
+    rarity,
+    sku,
+    is_physical,
+    subscription_only,
+    weight_grams,
+    dimensions_cm,
+    image_url,
+    is_active
+) VALUES (
+    1,
+    'Camiseta Exclusiva Marvel',
+    'Camiseta oficial da Marvel com estampa exclusiva do Homem de Ferro.',
+    99.90,
+    150,
+    2,
+    'Marvel',
+    'exclusive',
+    'MARV-TSH-001',
+    TRUE,
+    FALSE,
+    250,
+    '30x20x2',
+    'https://example.com/images/marvel_tshirt.jpg',
+    TRUE
+);
+
+INSERT INTO clubs (
+    user_id,
+    club_name,
+    description,
+    is_active
+) VALUES (
+    1,
+    'Clube dos Heróis',
+    'Clube dedicado a fãs de super-heróis e cultura geek.',
+    TRUE
+);
+
+select * from products;
