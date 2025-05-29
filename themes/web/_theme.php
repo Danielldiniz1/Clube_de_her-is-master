@@ -35,6 +35,7 @@
                 <li><a href="<?= url(); ?>">Início</a></li>
                 <li><a href="<?= url('sobre'); ?>">Sobre</a></li>
                 <li><a href="<?= url('contato'); ?>">Contato</a></li>
+                <li><a href="<?= url('produtos'); ?>">Produtos</a></li>
                 <li><a href="<?= url('faqs'); ?>">Faq</a></li>
                 <li><a href="<?= url('login'); ?>" class="btn-login">Login</a></li>
                 <li><a href="<?= url('cadastro'); ?>" class="btn-register">Cadastre-se</a></li>

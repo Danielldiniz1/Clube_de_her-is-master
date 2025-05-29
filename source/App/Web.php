@@ -65,7 +65,10 @@ class Web
             
         ]);
     }
-
+    public function products (): void
+    {
+       echo $this->view->render("products", []);
+    }
     /*public function error (array $data)
     {
         var_dump($data);
