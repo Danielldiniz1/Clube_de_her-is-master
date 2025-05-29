@@ -1,35 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>..:: Área Privada ::..</title>
-    <link rel="stylesheet" href="<?= url("assets/css/app/styles.css"); ?>"> <!-- Atualize com o caminho correto do seu arquivo CSS -->
-    <script type="module" src="<?= url("assets/js/app/theme.js");  ?>"></script>
-    <?php if ($this->section("specific-script")): ?>
-        <?= $this->section("specific-script"); ?>
-    <?php endif; ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clube de heróis</title>
+    <meta name="description" content="Plataforma white-label de clubes de assinatura geek para criadores de conteúdo e lojas" />
+    <meta name="author" content="Clube de Heróis" />
+    <meta property="og:title" content="Clube de Heróis - Plataforma de Assinatura Geek" />
+    <meta property="og:description" content="Plataforma white-label de clubes de assinatura geek para criadores de conteúdo e lojas" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;500;700&display=swap">
+    <body>
+    <div id="root"></div>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </body>
 </head>
-<body class="private-area">
-<nav id="private-navbar">
-    <div id="user-greeting">
-        <div id="user-photo"></div>
-        <span>Olá, Fulano!</span>
+    <link rel="stylesheet" href="<?= url("assets/css/web/main.css"); ?>">
+    <script type="module" src="<?= url("assets/js/web/theme.js"); ?>" async></script>
+<?php if ($this->section("specific-script")): ?>
+    <?= $this->section("specific-script"); ?>
+<?php endif; ?>
+</head>
+<body>
+<header class="public-header"> <div class="container">
+        <nav>
+            <a href="<?= url(); ?>" class="logo comic-font">CLUBE DE HERÓIS</a>
+            <ul class="nav-menu">
+                <li><a href="<?= url(); ?>">Início</a></li>
+                <li><a href="<?= url('sobre'); ?>">Sobre</a></li>
+                <li><a href="<?= url('contato'); ?>">Contato</a></li>
+                <li><a href="<?= url('faqs'); ?>">Faq</a></li>
+                <li><a href="<?= url('produtos'); ?>">Produtos</a></li> <li><a href="<?= url('perfil-publico'); ?>">Perfil</a></li> <li><a href="<?= url('login'); ?>" class="btn-login">Login</a></li>
+                <li><a href="<?= url('cadastro'); ?>" class="btn-register">Cadastre-se</a></li>
+            </ul>
+            <div class="menu-toggle">☰</div>
+        </nav>
     </div>
-    <a href="<?= url("/app/perfil"); ?>">Perfil</a>
-    <a href="#">Meus Pedidos</a>
-    <a href="#">Configurações</a>
-    <a href="#">Mensagens</a>
-    <a href="<?= url("/app/carrinho"); ?>">Carrinho</a>
-    <a href="#">Sair</a>
-</nav>
-<div class="content">
+</header>
     <?php
-    echo $this->section("content");
+        echo $this->section("content");
     ?>
-</div>
-<footer class="private-footer">
-    © 2023 Nome da Empresa. Todos os direitos reservados.
-</footer>
+<footer>
+    <div class="container">
+      <a href="#" class="footer-logo comic-font">CLUBE DE HERÓIS</a>
+      <ul class="footer-links">
+        <li><a href="#">Início</a></li>
+        <li><a href="#plans">Planos</a></li>
+        <li><a href="<?= url('sobre'); ?>">Sobre</a></li>
+        <li><a href="<?= url('contato'); ?>">Contato</a></li>
+      </ul>
+      <div class="copyright">© 2025 Clube de Heróis. Todos os direitos reservados.</div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;500;700&display=swap">
     <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </body>
 </head>
@@ -27,18 +26,16 @@
 <?php endif; ?>
 </head>
 <body>
-<header>
-    <div class="container">
+<header class="public-header"> <div class="container">
         <nav>
             <a href="<?= url(); ?>" class="logo comic-font">CLUBE DE HERÓIS</a>
             <ul class="nav-menu">
                 <li><a href="<?= url(); ?>">Início</a></li>
                 <li><a href="<?= url('sobre'); ?>">Sobre</a></li>
                 <li><a href="<?= url('contato'); ?>">Contato</a></li>
-                <li><a href="<?= url('produtos'); ?>">Produtos</a></li>
                 <li><a href="<?= url('faqs'); ?>">Faq</a></li>
+                <li><a href="<?= url('produtos'); ?>">Produtos</a></li> 
                 <li><a href="<?= url('login'); ?>" class="btn-login">Login</a></li>
-                <li><a href="<?= url('cadastro'); ?>" class="btn-register">Cadastre-se</a></li>
             </ul>
             <div class="menu-toggle">☰</div>
         </nav>

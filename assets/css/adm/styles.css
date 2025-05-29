@@ -1,0 +1,171 @@
+/* Estilos para a área administrativa */
+@import '/assets/css/web/base.css';
+
+body.admin-area {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background); /* Use background color from main site */
+    color: var(--text); /* Use text color from main site */
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background-color: var(--secondary); /* Dark grey for sidebar */
+    padding: 20px;
+    box-shadow: 5px 5px 0px black; /* Solid shadow like main site's comic-border */
+    border-right: 3px solid black; /* Strong black border */
+}
+
+.admin-sidebar h2 {
+    color: var(--primary); /* Strong red for title */
+    font-family: 'Bangers', cursive; /* Comic font for titles */
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 2px 2px 0px black; /* Black text shadow */
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.admin-sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.admin-sidebar ul li a {
+    color: var(--text); /* Links in light grey/white */
+    text-decoration: none;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.admin-sidebar ul li a:hover {
+    background-color: var(--accent); /* Lighter red background on hover */
+    color: black; /* Black text for high contrast on red */
+    transform: translateX(5px);
+    box-shadow: 2px 2px 0px black;
+}
+
+.admin-sidebar ul li a.active {
+    background-color: var(--primary); /* Strong red background for active item */
+    color: black; /* Black text for high contrast on red */
+    font-weight: 700;
+    box-shadow: 3px 3px 0px black;
+}
+
+.admin-content { /* Renamed from .admin-content-wrapper for clarity in your code */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-main-content { /* Assuming you'll wrap your content in this class */
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.admin-main-content h1 {
+    color: var(--primary); /* Strong red for main content titles */
+    font-family: 'Bangers', cursive; /* Comic font for main content titles */
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 0px black;
+}
+
+/* Applying the main site's card style to general elements in admin */
+.admin-main-content .panel-card {
+    background-color: var(--secondary); /* Dark grey background for cards */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px black; /* Comic-border style shadow */
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.admin-main-content .panel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 0px black;
+}
+
+.admin-footer {
+    background-color: var(--secondary); /* Dark grey for footer */
+    color: var(--text); /* Light text for footer */
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    border-top: 3px solid black; /* Strong black border */
+    box-shadow: 0 -5px 0px var(--primary); /* Red shadow at the top of the footer */
+}
+
+/* Responsiveness for mobile sidebar menu */
+@media (max-width: 768px) {
+    body.admin-area {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        border-right: none;
+        border-bottom: 3px solid black;
+        box-shadow: 0 5px 0px var(--primary); /* Red shadow for mobile header */
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+    }
+    .admin-sidebar h2 {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+    }
+    .admin-sidebar nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--secondary);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    }
+    .admin-sidebar nav ul.active {
+        display: flex;
+    }
+    .admin-sidebar ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .admin-sidebar ul li a {
+        padding: 10px 15px;
+        border-radius: 0;
+    }
+    .admin-main-content {
+        padding: 20px;
+    }
+    .admin-main-content h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Style for the mobile toggle button */
+.admin-menu-toggle {
+    display: none;
+    color: var(--primary); /* Red toggle icon */
+}
+@media (max-width: 768px) {
+    .admin-menu-toggle {
+        display: block;
+    }
+}
