@@ -30,12 +30,13 @@
         <nav>
             <a href="<?= url(); ?>" class="logo comic-font">CLUBE DE HERÓIS</a>
             <ul class="nav-menu">
-                <li><a href="<?= url(); ?>">Início</a></li>
-                <li><a href="<?= url('sobre'); ?>">Sobre</a></li>
-                <li><a href="<?= url('contato'); ?>">Contato</a></li>
-                <li><a href="<?= url('faqs'); ?>">Faq</a></li>
-                <li><a href="<?= url('produtos'); ?>">Produtos</a></li> <li><a href="<?= url('perfil-publico'); ?>">Perfil</a></li> <li><a href="<?= url('login'); ?>" class="btn-login">Login</a></li>
-                <li><a href="<?= url('cadastro'); ?>" class="btn-register">Cadastre-se</a></li>
+                <li><a href="<?= url('app/minhascompras'); ?>">Minhas compras</a></li>
+                <li><a href="<?= url('app/produtos'); ?>">Produtos</a></li>
+                <li><a href="<?= url('app/carrinho'); ?>">Meu carrinho</a></li>
+                <li><a href="<?= url('app/meuclube'); ?>">Meu clube</a></li>
+                <li><a href="<?= url('app/listadedesejos'); ?>">Lista de desejos</a></li>
+                <li><a href="<?= url('app/perfil'); ?>">Perfil</a></li>                
+
             </ul>
             <div class="menu-toggle">☰</div>
         </nav>

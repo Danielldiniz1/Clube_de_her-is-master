@@ -28,5 +28,21 @@ class App
     {
         echo $this->view->render("cart", []);
     }
+    public function wishlist (array $data)
+    {
+        echo $this->view->render("wishlist", []);
+    }
+    public function myClub (array $data)
+    {
+        echo $this->view->render("myClub", []);
+    }
+    public function myBuys (array $data)
+    {
+        echo $this->view->render("myBuys", []);
+    }
+    public function products (array $data)
+    {
+        echo $this->view->render("products", []);
+    }
 
 }

@@ -26,5 +26,16 @@ class Admin
     public function products () {
         echo $this->view->render("products",[]);
     }
+    public function manageProducts () {
+        echo $this->view->render("manage-products",[]);
+    }
+    public function manageUsers () {
+        echo $this->view->render("manage-users",[]);
+    }
+    public function manageClubs () {
+        echo $this->view->render("manage-clubs",[]);
+    }
+
+
 
 }

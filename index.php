@@ -19,7 +19,6 @@ $route->get("/servicos","Web:services");
 $route->get("/faqs","Web:faqs");
 $route->get("/login","Web:login");
 $route->get("/cadastro","Web:register");
-$route->get("/produtos","Web:products");
 
 // Rotas amigáveis da área restrita
 $route->group("/app");
@@ -27,13 +26,20 @@ $route->group("/app");
 $route->get("/", "App:home");
 $route->get("/perfil", "App:profile");
 $route->get("/carrinho", "App:cart");
+$route->get("/listadedesejos", "App:wishlist");
+$route->get("/meuclube", "App:myClub");
+$route->get("/minhascompras", "App:myBuys");
+$route->get("/produtos","App:products");
 
 $route->group(null);
 
 $route->group("/admin");
 
 $route->get("/", "Admin:home");
-$route->get("/cadastro-produtos", "Admin:products");
+
+$route->get("/manprodutos", "Admin:manageProducts");
+$route->get("/manusuarios", "Admin:manageUsers");
+$route->get("/manclubes", "Admin:manageClubs");
 
 $route->group(null);
 

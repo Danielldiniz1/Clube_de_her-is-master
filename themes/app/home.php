@@ -4,5 +4,5 @@
 
 <div class="content-private">
     <!-- Conteúdo principal da área privada aqui -->
-    Conteúdo principal da área privada aqui
+    Conteúdo Para clientes
 </div>

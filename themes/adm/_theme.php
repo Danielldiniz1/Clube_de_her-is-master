@@ -9,27 +9,11 @@
     <aside class="admin-sidebar">
         <h2>Área Administrativa</h2>
         <nav>
-            <?php
-            // Obtém o URI atual usando a função da extensão URI do Plates.
-            $currentUri = $this->uri();
-
-            // Assume que o caminho base do projeto é '/Clube_de_her-is-master'
-            // Você pode obter CONF_URL_TEST e parsear a URL para pegar o path se for dinâmico
-            $basePath = '/Clube_de_her-is-master';
-            $cleanUri = str_replace($basePath, '', $currentUri);
-
-            // Garante que o cleanUri comece com '/' se não for o caso
-            if (empty($cleanUri) || $cleanUri[0] !== '/') {
-                $cleanUri = '/' . $cleanUri;
-            }
-            ?>
             <div class="admin-menu-toggle">☰</div>
             <ul class="admin-nav-menu">
-                <li><a href="<?= url("/admin"); ?>" class="<?= ($cleanUri === '/admin' || $cleanUri === '/admin/') ? 'active' : '' ?>">Dashboard</a></li>
-                <li><a href="<?= url("/admin/cadastro-produtos"); ?>" class="<?= ($cleanUri === '/admin/cadastro-produtos') ? 'active' : '' ?>">Gerenciar Produtos</a></li>
-                <li><a href="#">Gerenciar Usuários</a></li>
-                <li><a href="#">Relatórios</a></li>
-                <li><a href="<?= url("/login"); ?>">Sair</a></li>
+                <li><a href="<?= url('admin/manprodutos'); ?>">Gerenciar Usuários</a></li>
+                <li><a href="<?= url('admin/manusuarios'); ?>">Gerenciar Clubs</a></li>
+                <li><a href="<?= url('admin/manclubes'); ?>">Gerenciar produtos</a></li>
             </ul>
         </nav>
     </aside>

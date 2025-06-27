@@ -1,0 +1,304 @@
+/*-------------------------------------------*/
+/* ESTILOS GERAIS                          */
+/*-------------------------------------------*/
+body {
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    color: #e40414;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/*-------------------------------------------*/
+/* ESTILOS ADICIONAIS PARA PERFIL            */
+/*-------------------------------------------*/
+
+/* Contêiner da foto e botão */
+.profile-pic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Estilo da imagem de perfil */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Cria o formato circular */
+    border: 4px solid #e40414;
+    object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
+    background-color: #333; /* Cor de fundo caso a imagem não carregue */
+    margin-bottom: 15px;
+}
+
+/* Esconde o input de arquivo padrão */
+#upload-pic {
+    display: none;
+}
+
+/* Título para a seção de endereço */
+.form-section-title {
+    color: #f0f0f0;
+    border-bottom: 2px solid #e40414;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    /* Faz o título ocupar todas as colunas da grade */
+    grid-column: 1 / -1;
+}
+
+/* Grade para organizar os campos de endereço */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+    gap: 20px; /* Espaço entre os campos */
+}
+
+/* Faz o campo ocupar a largura total na grade */
+.full-width {
+    grid-column: 1 / -1;
+}
+/*-------------------------------------------*/
+/* ESTILOS DO MODAL                          */
+/*-------------------------------------------*/
+
+/* O Fundo do Modal (Overlay) */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1000; /* Garante que fique na frente de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite scroll se o conteúdo for grande */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+    padding-top: 60px;
+}
+
+/* Conteúdo do Modal (a caixa do formulário) */
+.modal-content {
+    position: relative;
+    background-color: #1f1f1f;
+    margin: auto;
+    padding: 30px 40px;
+    border: 1px solid #333;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s; /* Animação de entrada */
+}
+
+/* Animação de Fade-in */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+
+/* Botão de Fechar (o "X") */
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #e40414;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*-------------------------------------------*/
+/* BOTÕES                                    */
+/*-------------------------------------------*/
+.btn {
+    background-color: #e40414;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #b30310;
+}
+
+.btn-secondary {
+    background-color: #555;
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+
+/*-------------------------------------------*/
+/* TABELAS (Carrinho, Minhas Compras, etc)   */
+/*-------------------------------------------*/
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.custom-table th, .custom-table td {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.custom-table thead {
+    background-color: #e40414;
+    text-transform: uppercase;
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+.custom-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.custom-table .product-info {
+    display: flex;
+    align-items: center;
+}
+
+.custom-table .product-info img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.custom-table input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/*-------------------------------------------*/
+/* LOJA (Meu Clube) & LISTA DE DESEJOS       */
+/*-------------------------------------------*/
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    color: #f0f0f0;
+}
+
+.product-card .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #e40414;
+    margin-bottom: 20px;
+}
+
+/*-------------------------------------------*/
+/* PERFIL & FORMULÁRIOS                      */
+/*-------------------------------------------*/
+.profile-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/*-------------------------------------------*/
+/* SEÇÃO DE TOTAL (Carrinho)                 */
+/*-------------------------------------------*/
+.cart-summary {
+    max-width: 400px;
+    margin: 30px 0 0 auto; /* Alinha à direita */
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: right;
+}
+
+.cart-summary h3 {
+    margin: 0 0 20px 0;
+    text-align: right;
+    color: #f0f0f0;
+}
