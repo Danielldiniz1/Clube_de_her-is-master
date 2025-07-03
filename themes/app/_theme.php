@@ -19,8 +19,7 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </body>
 </head>
-    <link rel="stylesheet" href="<?= url("assets/css/web/main.css"); ?>">
-    <script type="module" src="<?= url("assets/js/web/theme.js"); ?>" async></script>
+    <link rel="stylesheet" href="<?= url("themes/app/style.css"); ?>">
 <?php if ($this->section("specific-script")): ?>
     <?= $this->section("specific-script"); ?>
 <?php endif; ?>
@@ -38,16 +37,17 @@
                 <li><a href="<?= url('app/perfil'); ?>">Perfil</a></li>                
 
             </ul>
-            <div class="menu-toggle">☰</div>
         </nav>
     </div>
 </header>
     <?php
-        echo $this->section("content");
+echo '<main class="app-container">';
+echo $this->section("content");
+echo '</main>';
     ?>
 <footer>
     <div class="container">
-      <a href="#" class="footer-logo comic-font">CLUBE DE HERÓIS</a>
+      <p class="footer-logo comic-font">CLUBE DE HERÓIS</p>
       <ul class="footer-links">
         <li><a href="#">Início</a></li>
         <li><a href="#plans">Planos</a></li>

@@ -1,7 +1,7 @@
 <?php
 echo $this->layout("_theme");
 ?>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<?= url("themes/app/assets/css/style.css"); ?>">
 
     <div class="container">
         <h2>Carrinho de Compras</h2>
