@@ -22,6 +22,42 @@
                     <td><a href="#" class="btn btn-secondary">Detalhes</a></td>
                 </tr>
                  </tbody>
+            <tbody>
+                <tr>
+                    <td>#202401</td>
+                    <td>20/05/2024</td>
+                    <td>Entregue</td>
+                    <td>R$ 529,70</td>
+                    <td><a href="#" class="btn btn-secondary">Detalhes</a></td>
+                </tr>
+                 </tbody>
+            <tbody>
+                <tr>
+                    <td>#202401</td>
+                    <td>20/05/2024</td>
+                    <td>Entregue</td>
+                    <td>R$ 529,70</td>
+                    <td><a href="#" class="btn btn-secondary">Detalhes</a></td>
+                </tr>
+                 </tbody>
+            <tbody>
+                <tr>
+                    <td>#202401</td>
+                    <td>20/05/2024</td>
+                    <td>Entregue</td>
+                    <td>R$ 529,70</td>
+                    <td><a href="#" class="btn btn-secondary">Detalhes</a></td>
+                </tr>
+                 </tbody>
+            <tbody>
+                <tr>
+                    <td>#202401</td>
+                    <td>20/05/2024</td>
+                    <td>Entregue</td>
+                    <td>R$ 529,70</td>
+                    <td><a href="#" class="btn btn-secondary">Detalhes</a></td>
+                </tr>
+                 </tbody>
         </table>
     </div>
 </body>
