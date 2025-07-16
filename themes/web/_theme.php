@@ -20,7 +20,7 @@
   </body>
 </head>
     <link rel="stylesheet" href="<?= url("assets/css/web/main.css"); ?>">
-    <script type="module" src="<?= url("assets/js/web/theme.js"); ?>" async></script>
+
 <?php if ($this->section("specific-script")): ?>
     <?= $this->section("specific-script"); ?>
 <?php endif; ?>

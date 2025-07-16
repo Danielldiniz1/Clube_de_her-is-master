@@ -2,7 +2,7 @@
 
 namespace Source\App\Api;
 
-use Source\Core\TokenJWT;
+use Source\Core\JWTToken;
 use Source\Models\User;
 
 class Users extends Api
@@ -12,152 +12,117 @@ class Users extends Api
         parent::__construct();
     }
 
-    public function getUser ()
+    public function listUsers()
     {
-        $this->auth();
-
-        $users = new User();
-        $user = $users->selectById($this->userAuth->id);
-
-        $this->back([
-            "type" => "success",
-            "message" => "Usuário autenticado",
-            "user" => [
-                "id" => $this->userAuth->id,
-                "name" => $this->userAuth->name,
-                "email" => $this->userAuth->email,
-                "address" => $user->address
-            ]
-        ]);
-
+        $user = new User();
+        $this->call(200, "success", "Lista de usuários recuperada", "success")->back($user->selectAll());
     }
 
-    public function listUsers ()
+    public function insertUser(array $data)
     {
-        $users = new User();
-        $this->back($users->selectAll());
-    }
-
-    public function createUser (array $data)
-    {
-        if(in_array("", $data)) {
-            $this->back([
-                "type" => "error",
-                "message" => "Preencha todos os campos"
-            ]);
-            return;
-        }
+        $idType = $data["idType"] ?? null;
 
         $user = new User(
             null,
+            $idType,
             $data["name"],
             $data["email"],
-            $data["password"]
+            $data["password"],
+            $data["photo"] ?? null
         );
 
-        $insertUser = $user->insert();
+        $insert = $user->insert();
 
-        if(!$insertUser){
-            $this->back([
-                "type" => "error",
-                "message" => $user->getMessage()
-            ]);
+        if (!$insert) {
+            $this->call(400, "error", $user->getMessage() ?? "Erro na requisição", "error")->back();
             return;
         }
 
-        $this->back([
-            "type" => "success",
-            "message" => "Usuário cadastrodo com sucesso!"
-        ]);
-
-    }
-
-    public function loginUser (array $data) {
-        $user = new User();
-
-        if(!$user->login($data["email"],$data["password"])){
-            $this->back([
-                "type" => "error",
-                "message" => $user->getMessage()
-            ]);
-            return;
-        }
-        $token = new TokenJWT();
-        $this->back([
-            "type" => "success",
-            "message" => $user->getMessage(),
+        $this->call(201, "success", "Usuário cadastrado com sucesso", "success")->back([
             "user" => [
-                "id" => $user->getId(),
+                "id" => $insert,
+                "idType" => $user->getIdType(),
                 "name" => $user->getName(),
                 "email" => $user->getEmail(),
+                "photo" => $user->getPhoto()
+            ]
+        ]);
+    }
+
+    public function loginUser(array $data)
+    {
+        $user = new User();
+
+        if (!$user->login($data["email"], $data["password"])) {
+            $this->call(401, "error", $user->getMessage() ?? "Credenciais inválidas", "error")->back();
+            return;
+        }
+
+        $token = new JWTToken();
+        $this->call(200, "success", $user->getMessage(), "success")->back([
+            "user" => [
+                "id" => $user->getId(),
+                "idType" => $user->getIdType(),
+                "name" => $user->getName(),
+                "email" => $user->getEmail(),
+                "photo" => $user->getPhoto(),
                 "token" => $token->create([
                     "id" => $user->getId(),
                     "name" => $user->getName(),
-                    "email" => $user->getEmail()
+                    "email" => $user->getEmail(),
+                    "idType" => $user->getIdType()
                 ])
             ]
         ]);
-
     }
 
     public function updateUser(array $data)
     {
-        if(!$this->userAuth){
-            $this->back([
-                "type" => "error",
-                "message" => "Você não pode estar aqui.."
-            ]);
+        if (!$this->userAuth) {
+            $this->call(401, "error", "Você não pode estar aqui..", "error")->back();
             return;
         }
 
         $user = new User(
             $this->userAuth->id,
-            $data["name"],
-            $data["email"]
+            $data["idType"] ?? $this->userAuth->idType,
+            $data["name"] ?? null,
+            $data["email"] ?? null,
+            null,
+            $data["photo"] ?? null
         );
 
-        if(!$user->update()){
-            $this->back([
-                "type" => "error",
-                "message" => $user->getMessage()
-            ]);
+        if (!$user->update()) {
+            $this->call(400, "error", $user->getMessage(), "error")->back();
             return;
         }
 
-        $this->back([
-            "type" => "success",
-            "message" => $user->getMessage(),
+        $this->call(200, "success", $user->getMessage(), "success")->back([
             "user" => [
                 "id" => $user->getId(),
+                "idType" => $user->getIdType(),
                 "name" => $user->getName(),
-                "email" => $user->getEmail()
+                "email" => $user->getEmail(),
+                "photo" => $user->getPhoto()
             ]
         ]);
     }
 
     public function setPassword(array $data)
     {
-        if(!$this->userAuth){
-            $this->back([
-                "type" => "error",
-                "message" => "Você não pode estar aqui.."
-            ]);
+        $this->auth();
+
+        if (!$this->userAuth) {
+            $this->call(401, "error", "Você não pode estar aqui..", "error")->back();
             return;
         }
 
         $user = new User($this->userAuth->id);
 
-        if(!$user->updatePassword($data["password"],$data["newPassword"],$data["confirmNewPassword"])){
-            $this->back([
-                "type" => "error",
-                "message" => $user->getMessage()
-            ]);
+        if (!$user->updatePassword($data["password"], $data["newPassword"], $data["confirmNewPassword"])) {
+            $this->call(400, "error", $user->getMessage(), "error")->back();
             return;
         }
 
-        $this->back([
-            "type" => "success",
-            "message" => $user->getMessage()
-        ]);
-    }
+        $this->call(200, "success", $user->getMessage(), "success")->back();}
 }

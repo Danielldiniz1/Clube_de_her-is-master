@@ -25,9 +25,8 @@ $route->namespace("Source\App\Api");
 
 $route->group("/users");
 
-$route->get("/", "Users:listUsers");
-$route->post("/","Users:createUser");
-$route->get("/me","Users:getUser");
+$route->get("", "Users:listUsers");
+$route->post("/register", "Users:insertUser");
 $route->post("/login","Users:loginUser");
 $route->post("/update","Users:updateUser");
 $route->post("/set-password","Users:setPassword");

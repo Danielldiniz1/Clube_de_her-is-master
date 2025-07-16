@@ -10,6 +10,3 @@
 @import 'pages/home.css';
 @import 'pages/faqs.css';
 @import 'pages/products.css';
-@import 'pages/user_profile.css';
-@import 'adm/styles.css'; /* Novo import para estilos do admin */
-/* Adicione outros imports conforme necessário */

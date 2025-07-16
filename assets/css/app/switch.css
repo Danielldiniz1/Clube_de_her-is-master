@@ -1,0 +1,86 @@
+/* Modal */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;;
+}
+
+/* Caixa do conteúdo */
+.modal-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  color: #e75480;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+}
+
+input[type="password"] {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Botões */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button.save {
+  background-color: #e75480;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+}
+
+button.cancel {
+  background-color: #fcddec;
+  color: #e75480;
+  padding: 10px 20px;
+  border: 1px solid #e75480;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+}
+
+button.save:hover {
+  background-color: #d94470;
+}
+
+button.cancel:hover {
+  background-color: #ffeaf3;
+}

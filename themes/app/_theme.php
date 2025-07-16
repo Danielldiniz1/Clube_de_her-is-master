@@ -21,6 +21,7 @@
 </head>
     <link rel="stylesheet" href="<?= url("themes/app/style.css"); ?>">
 <?php if ($this->section("specific-script")): ?>
+<script src="assets/js/app/scripts-change-password.js" async></script>
     <?= $this->section("specific-script"); ?>
 <?php endif; ?>
 </head>
@@ -34,17 +35,50 @@
                 <li><a href="<?= url('app/carrinho'); ?>">Meu carrinho</a></li>
                 <li><a href="<?= url('app/meuclube'); ?>">Meu clube</a></li>
                 <li><a href="<?= url('app/listadedesejos'); ?>">Lista de desejos</a></li>
-                <li><a href="<?= url('app/perfil'); ?>">Perfil</a></li>                
+                <li><a href="<?= url('app/perfil'); ?>">Perfil</a></li>     
+                <a>
+                <li id="change">Trocar senha</li>
+                </a>        
 
             </ul>
         </nav>
     </div>
+    <?php
+  $this->start("specific-script");
+?>
+<script type="module" src="assets/js/app/scripts-change-password.js" async></script>
+<?php
+    $this->end();
+?>
 </header>
     <?php
+    
 echo '<main class="app-container">';
 echo $this->section("content");
 echo '</main>';
     ?>
+    <div class="modal" id="modal">
+     <link rel="stylesheet" href="<?= url("assets/css/app/switch.css"); ?>">
+
+    <div class="modal-content">
+      <h2>Alterar Senha</h2>
+      <form>
+        <label for="currentPassword">Senha Atual</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+
+        <label for="newPassword">Nova Senha</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <label for="confirmPassword">Confirmar Nova Senha</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <div class="buttons">
+          <button type="submit" class="save">Salvar</button>
+          <button type="button" class="cancel" id="cancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 <footer>
     <div class="container">
       <p class="footer-logo comic-font">CLUBE DE HERÓIS</p>

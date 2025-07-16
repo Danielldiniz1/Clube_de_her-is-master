@@ -2,46 +2,60 @@
 
 namespace Source\App\Api;
 
-use Source\Core\TokenJWT;
+use Source\Core\JWTToken;
+
 
 class Api
 {
     protected $headers;
-    // atributo para armazenar os dados do usuário autenticado
-    protected $userAuth;
+    protected $response;
+    protected $userAuth = false;
 
     public function __construct()
     {
+        header('Content-Type: application/json; charset=UTF-8');
         $this->headers = getallheaders();
-        header("Content-Type: application/json");
-
-        if(!empty($this->headers["token"]) || isset($this->headers["token"])){
-            $jwt = new TokenJWT();
-            if($jwt->verify($this->headers["token"])){
-                $this->userAuth = $jwt->token->data;
-            }
-        }
     }
 
-    protected function back (array $response, int $code = 200) : void
+    protected function call (int $code, string $status = null, string $message = null, $type = null): Api
     {
         http_response_code($code);
-        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        if(!empty($status)){
+            $this->response = [
+                "code" => $code,
+                "type" => $type,
+                "status" => $status,
+                "message" => (!empty($message) ? $message : null)
+            ];
+        }
+        return $this;
     }
 
-    protected function auth (): void
+    protected function back(array $data = null): Api
     {
-        if (!$this->userAuth){
-            $response = [
-                "error" => [
-                    "code" => "401",
-                    "type" => "unauthorized",
-                    "message" => "Usuário não autorizado e/ou token expirado"
-                ]
-            ];
-            $this->back($response, 401);
+        if ($data) {
+            $this->response["data"] = $data;
+        }
+        echo json_encode($this->response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return $this;
+    }
+
+    protected function auth(): void
+    {
+        $token = $this->headers['token'] ?? null;
+
+        if (!$token) {
+            $this->call(401, "unauthorized", "Token não fornecido", "error")->back();
             exit();
         }
-    }
 
+        $jwt = new JWTToken();
+        $decoded = $jwt->decode($token);
+
+        if (!$decoded) {
+            $this->call(401, "unauthorized", "Token inválido ou expirado", "error")->back();
+            exit();
+        }
+
+        $this->userAuth = $decoded->data;}
 }

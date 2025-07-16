@@ -4,7 +4,7 @@
 <?php
   $this->start("specific-script");
 ?>
-<script type="module" src="<?= url("assets/js/web/login.js"); ?>" async></script>
+<script type="module" src="<?= url("assets/js/web/scripts-login.js"); ?>" async></script>
 <?php
     $this->end();
 ?>
@@ -32,6 +32,7 @@
                 </div>
                 
                 <button type="submit" class="btn-submit">Entrar</button>
+                <p id="result"></p>
             </form>
             
             <div class="auth-footer">
